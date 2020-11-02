@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+
+<body>
+    <div class="container-fluid my-auto">
+        <div class="text-center">
+            <h1 class="btn btn-primary btn-lg text-center disabled">Selamat Datang di SIPESAWAT!</h1>
+        </div>
+        <br>
+        <br>
+        <h2 class="text-center">Daftar Fitur:</h2>
+        <div class="container text-center">
+            <div class="btn-group mr-2" role="group" aria-label="First group">
+                <a th:href="@{/pesawat}" type="button" class="btn btn-primary btn-sm">Pesawat</a>
+                <a th:href="@{/penerbangan}" type="button" class="btn btn-primary btn-sm">Penerbangan</a>
+                <a th:href="@{/cari}" type="button" class="btn btn-primary btn-sm">Cari</a>
+                <a th:href="@{/filter}" type="button" class="btn btn-primary btn-sm">Filter</a>
+            </div>
+        </div>
+
+    </div>
+</body>
