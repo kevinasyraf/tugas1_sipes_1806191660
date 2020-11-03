@@ -1,6 +1,7 @@
 package apap.tugas.sipes.controller;
 
 import apap.tugas.sipes.model.PenerbanganModel;
+import apap.tugas.sipes.model.PesawatModel;
 import apap.tugas.sipes.service.PenerbanganService;
 import apap.tugas.sipes.service.PesawatService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -47,5 +49,16 @@ public class PenerbanganController {
         model.addAttribute("penerbangan", penerbangan);
 
         return "tambah-penerbangan";
+    }
+
+    @GetMapping("penerbangan/{id}")
+    public String viewDetailPenerbanganById(
+            @PathVariable(value = "id") Long id,
+            Model model
+    ) {
+        PenerbanganModel penerbangan = penerbanganService.getPenerbanganModelById(id);
+        model.addAttribute("penerbangan", penerbangan);
+
+        return "view-penerbangan";
     }
 }

@@ -24,4 +24,9 @@ public class PenerbanganServiceImpl implements PenerbanganService {
     public void addPenerbangan(PenerbanganModel penerbangan) {
         penerbanganDb.save(penerbangan);
     }
+
+    @Override
+    public PenerbanganModel getPenerbanganModelById(Long id) {
+        return penerbanganDb.findById(id).get();
+    }
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Pesawat</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="container-fluid">
+    <div class="mx-auto" style="width: 600px">
+        <h3 class="text-center">Detail Pesawat</h3>
+        <br>
+        <br>
+        <div class="row mx-5">
+            <h5 class="col">Kode Penerbangan</h5>
+            <div class="col">
+                <p class="text-dark" type="text" th:text="${penerbangan.nomorPenerbangan}"></p>
+            </div>
+        </div>
+        <div class="row mx-5">
+            <h5 class="col">Kode Bandara Asal</h5>
+            <div class="col">
+                <p class="text-dark" type="text" th:text="${penerbangan.kodeBandaraAsal}"></p>
+            </div>
+        </div>
+        <div class="row mx-5">
+            <h5 class="col">Kode Bandara Tujuan</h5>
+            <div class="col">
+                <p class="text-dark" type="text" th:text="${penerbangan.kodeBandaraTujuan}"></p>
+            </div>
+        </div>
+        <div class="row mx-5">
+            <h5 class="col">Waktu Berangkat</h5>
+            <div class="col">
+                <p class="text-dark" type="text" th:text="${penerbangan.waktuBerangkat}"></p>
+            </div>
+        </div>
+        <div class="row mx-5">
+            <h5 class="col">Nomor Seri Pesawat</h5>
+            <div class="col">
+                <span th:if="${penerbangan.pesawatModel == null}" class="text-dark" type="text" th:text="Belum diassign pesawat"></span>
+                <span th:unless="${penerbangan.pesawatModel == null}" class="text-dark" type="text" th:text="${penerbangan.pesawatModel.nomorSeri}"></span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
