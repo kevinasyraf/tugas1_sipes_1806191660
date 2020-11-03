@@ -64,4 +64,15 @@ public class PesawatServiceImpl implements PesawatService {
 
         return nomorSeri;
     }
+
+    @Override
+    public PesawatModel getPesawatModelById(Long id) {
+        return pesawatDb.findById(id).get();
+    }
+
+    @Override
+    public PesawatModel updatePesawat(PesawatModel pesawat) {
+        pesawatDb.save(pesawat);
+        return pesawat;
+    }
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Detail Pesawat</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="container-fluid">
+    <div class="mx-auto" style="width: 600px">
+        <h3 class="text-center">Detail Pesawat</h3>
+        <br>
+        <br>
+        <div class="row mx-5">
+            <h5 class="col">Nomor Seri Pesawat</h5>
+            <div class="col">
+                <p class="text-dark" type="text" th:text="${pesawat.nomorSeri}"></p>
+            </div>
+        </div>
+        <div class="row mx-5">
+            <h5 class="col">Jenis Pesawat</h5>
+            <div class="col">
+                <p class="text-dark" type="text" th:text="${pesawat.jenisPesawat}"></p>
+            </div>
+        </div>
+        <div class="row mx-5">
+            <h5 class="col">Nama Tipe Pesawat</h5>
+            <div class="col">
+                <p class="text-dark" type="text" th:text="${pesawat.tipeModel.nama}"></p>
+            </div>
+        </div>
+        <div class="row mx-5">
+            <h5 class="col">Maskapai</h5>
+            <div class="col">
+                <p class="text-dark" type="text" th:text="${pesawat.maskapai}"></p>
+            </div>
+        </div>
+        <div class="row mx-5">
+            <h5 class="col">Tempat Dibuat</h5>
+            <div class="col">
+                <p class="text-dark" type="text" th:text="${pesawat.tempatDibuat}"></p>
+            </div>
+        </div>
+        <div class="row mx-5">
+            <h5 class="col">Tanggal Dibuat</h5>
+            <div class="col">
+                <p class="text-dark" type="text" th:text="${pesawat.tanggalDibuat}"></p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -9,7 +9,7 @@
 <nav th:replace="fragments/fragment :: navbar"></nav>
 <div class="container-fluid">
     <h2 class="text-center">Daftar Pesawat</h2>
-    <a th:href="@{/pesawat/add}" th:object="${pesawat}" class="btn btn-primary">+ Tambah Pesawat</a>
+    <a th:href="@{/pesawat/tambah}" th:object="${pesawat}" class="btn btn-primary">+ Tambah Pesawat</a>
     <br>
     <br>
     <table class="table bg-info text-white">
@@ -31,8 +31,8 @@
             <td th:text="${pesawat.jenisPesawat}"></td>
             <td th:text="${pesawat.maskapai}"></td>
             <td>
-                <a class="btn btn-info">Lihat</a>
-                <a class="btn btn-warning">Ubah</a>
+                <a class="btn btn-info" th:href="@{/pesawat/} + ${pesawat.id}">Lihat</a>
+                <a class="btn btn-warning" th:href="@{/pesawat/ubah/} + ${pesawat.id}">Ubah</a>
                 <a class="btn btn-danger">Hapus</a>
             </td>
         </tr>

@@ -37,7 +37,7 @@ public class PenerbanganModel implements Serializable{
     @Column(name = "nomor_penerbangan", nullable = false, unique = true)
     private String nomorPenerbangan;
 
-    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_pesawat", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
@@ -49,6 +49,14 @@ public class PenerbanganModel implements Serializable{
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public PesawatModel getPesawatModel() {
+        return pesawatModel;
+    }
+
+    public void setPesawatModel(PesawatModel pesawatModel) {
+        this.pesawatModel = pesawatModel;
     }
 
     public String getKodeBandaraAsal() {

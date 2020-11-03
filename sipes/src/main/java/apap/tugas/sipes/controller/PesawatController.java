@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -36,7 +37,7 @@ public class PesawatController {
         return "pesawat";
     }
 
-    @GetMapping("/pesawat/add")
+    @GetMapping("/pesawat/tambah")
     public String addPesawatFormPage(Model model) {
         List<TipeModel> listTipe = tipeService.getAllTipe();
         List<TeknisiModel> listTeknisi = teknisiService.getAllTeknisi();
@@ -44,10 +45,10 @@ public class PesawatController {
         model.addAttribute("pesawat", new PesawatModel());
         model.addAttribute("listTipe", listTipe);
         model.addAttribute("listTeknisi", listTeknisi);
-        return "form-add-pesawat";
+        return "form-tambah-pesawat";
     }
 
-    @PostMapping("/pesawat/add")
+    @PostMapping("/pesawat/tambah")
     public String addPesawatSubmit(
             @ModelAttribute PesawatModel pesawat,
             Model model
@@ -59,6 +60,41 @@ public class PesawatController {
 
         model.addAttribute("pesawat", pesawat);
 
-        return "add-pesawat";
+        return "tambah-pesawat";
+    }
+
+    @GetMapping("pesawat/{id}")
+    public String viewDetailPesawatById(
+            @PathVariable(value = "id") Long id,
+            Model model
+    ) {
+        PesawatModel pesawat = pesawatService.getPesawatModelById(id);
+        model.addAttribute("pesawat", pesawat);
+
+        return "view-pesawat";
+    }
+
+    @GetMapping("pesawat/ubah/{id}")
+    public String ubahPesawatById(
+            @PathVariable(value = "id") Long id,
+            Model model
+    ) {
+        PesawatModel pesawat = pesawatService.getPesawatModelById(id);
+        model.addAttribute("pesawat", pesawat);
+
+        return "form-ubah-pesawat";
+    }
+
+    @PostMapping("pesawat/ubah")
+    public String ubahPesawatSubmit(
+            @ModelAttribute PesawatModel pesawat,
+            Model model
+    ) {
+        String nomorSeri = pesawatService.generateNomorSeri(pesawat);
+        pesawat.setNomorSeri(nomorSeri);
+        PesawatModel updatedPesawat = pesawatService.updatePesawat(pesawat);
+
+        model.addAttribute("pesawat", updatedPesawat);
+        return "ubah-pesawat";
     }
 }
