@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Form Add Pesawat</title>
+    <object th:include="fragments/fragment :: css" th:remove="tag"></object>
+    <object th:include="fragments/fragment :: js" th:remove="tag"></object>
+</head>
+<body>
+<nav th:replace="fragments/fragment :: navbar"></nav>
+<div class="container-fluid">
+    <h3 class="text-center">Form Tambah Pesawat</h3>
+    <form th:action="@{/pesawat/add}" th:object="${pesawat}" method="POST">
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Maskapai</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="maskapai" placeholder="masukkan maskapai pesawat">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Tanggal Dibuat</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="date" name="tanggalDibuat" placeholder="dd/mm/yyyy">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Tempat Dibuat</label>
+            <div class="col-sm-10">
+                <input class="form-control" type="text" name="tempatDibuat" placeholder="masukkan tempat pesawat dibuat">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Jenis</label>
+            <div class="col-sm-10">
+                <select class="form-control" name="jenisPesawat">
+                    <option value="Komersial">Komersial</option>
+                    <option value="Militer">Militer</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label">Tipe</label>
+            <div class="col-sm-10">
+                <select class="form-control" name="idTipeModel">
+                    <option th:each="tipe : ${listTipe}"
+                            th:value="${tipe.id}"
+                            th:text="${tipe.nama}"></option>
+                </select>
+            </div>
+        </div>
+<!--        <div class="form-group row">-->
+<!--            <label class="col-sm-2 col-form-label">Teknisi</label>-->
+<!--            <div class="col-sm-10">-->
+<!--                <select class="form-control" name="listTeknisi">-->
+<!--                    <option th:each="teknisi : ${listTeknisi}"-->
+<!--                            th:value="${teknisi}"-->
+<!--                            th:text="${teknisi.nama}"></option>-->
+<!--                </select>-->
+<!--            </div>-->
+<!--        </div>-->
+        <button class="btn btn-success" type="submit" value="Submit">Submit</button>
+    </form>
+</div>
+</body>
+</html>
