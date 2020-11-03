@@ -61,4 +61,36 @@ public class PenerbanganController {
 
         return "view-penerbangan";
     }
+
+    @GetMapping("penerbangan/ubah/{id}")
+    public String ubahPenerbanganById(
+            @PathVariable(value = "id") Long id,
+            Model model
+    ) {
+        PenerbanganModel penerbangan = penerbanganService.getPenerbanganModelById(id);
+        model.addAttribute("penerbangan", penerbangan);
+
+        return "form-ubah-penerbangan";
+    }
+
+    @PostMapping("penerbangan/ubah")
+    public String ubahPenerbanganSubmit(
+            @ModelAttribute PenerbanganModel penerbangan,
+            Model model
+    ) {
+        PenerbanganModel updatedPenerbangan = penerbanganService.updatePenerbangan(penerbangan);
+
+        model.addAttribute("penerbangan", updatedPenerbangan);
+        return "ubah-penerbangan";
+    }
+
+    @PostMapping("penerbangan/hapus/{idPenerbangan}")
+    public String deletepenerbangan(
+            @PathVariable(value = "idPenerbangan") Long idPenerbangan,
+            Model model
+    ) {
+        model.addAttribute("nomorPenerbangan", penerbanganService.getPenerbanganModelById(idPenerbangan));
+        penerbanganService.deletePenerbanganById(idPenerbangan);
+        return "hapus-penerbangan";
+    }
 }

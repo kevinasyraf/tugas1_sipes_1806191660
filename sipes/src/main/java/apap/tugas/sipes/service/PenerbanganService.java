@@ -10,4 +10,8 @@ public interface PenerbanganService {
     void addPenerbangan(PenerbanganModel penerbangan);
 
     PenerbanganModel getPenerbanganModelById(Long id);
+
+    void deletePenerbanganById(Long id);
+
+    PenerbanganModel updatePenerbangan(PenerbanganModel penerbangan);
 }
